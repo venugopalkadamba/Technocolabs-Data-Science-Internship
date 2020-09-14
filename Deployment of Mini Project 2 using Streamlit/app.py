@@ -84,25 +84,12 @@ def main():
         # print(prediction)
         # print(probability[:,1][0])
         if prediction[0] == 1:
-            if probability[:,1][0] > 0.2:
-
-                counselling_html = """
-                    <div style = "background-color: #f8d7da; font-weight:bold;padding:10px;border-radius:7px;">
-                        <p style = 'color: #721c24;'>This account will be defaulted and their are high chances for not defaulting after counselling the account holder.</p>
-                    </div>
-                """
-                st.markdown(counselling_html, unsafe_allow_html=True)
-
-                # st.success("This account will be defaulted and their are high chances for not defaulting after counselling the account holder.")
-            elif probability[:,1][0] < 0.2:
-
-                no_counselling_html = """
-                    <div style = "background-color: #f8d7da; font-weight:bold;padding:10px;border-radius:7px;">
-                        <p style = 'color: #721c24;'>This account will be defaulted and their are high chances for not defaulting after counselling the account holder.</p>
-                    </div>
-                """
-                st.markdown(no_counselling_html, unsafe_allow_html=True)
-                # st.success("This account will be defaulted and the counselling won't make account holder repay the credit bill.")
+            counselling_html = """
+                <div style = "background-color: #f8d7da; font-weight:bold;padding:10px;border-radius:7px;">
+                    <p style = 'color: #721c24;'>This account will be defaulted.</p>
+                </div>
+            """
+            st.markdown(counselling_html, unsafe_allow_html=True)
         else:
             st.success("This account will not be defaulted.")
 
