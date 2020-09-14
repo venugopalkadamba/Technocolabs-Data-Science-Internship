@@ -1,0 +1,246 @@
+<html>
+    <head>
+        <title>Credit Card Default Predictor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="og:title" content="Credit Card Default Predictor">
+        <meta name="author" content="VENU GOPAL KADAMBA">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+        <style>
+
+            html{
+                position: relative;
+                min-height: 100%;
+            }
+
+            body{
+                margin: 0 0 100px;
+                padding: 25px;
+            }
+            footer {
+                background-color: black;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 85px;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            a{
+                text-decoration: none !important;
+            }
+
+            a:hover{
+                cursor: pointer;
+            }
+
+            .nav-link{
+                font-size: 17px;
+            }
+
+            .card{
+                border: 1px solid black;
+            }
+
+            .form-group .form-control{
+                border: 1px solid black;
+            }
+        </style>
+    
+    
+    </head>
+
+    <body>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" style="background-color: black !important;">
+            <a href="{{ url_for('home') }}" style="color: white;font-size: 25px;">Credit Card Default</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav ml-auto">
+                 <li class="nav-item active">
+                   <a href="https://github.com/venugopalkadamba/Technocolabs-Data-Science-Internship/tree/master/Mini%20Project%202" target="_blank" class="nav-link"><span style="font-size: 20px;" class="fa fa-github"></span>&nbsp;Project Github</a>
+                 </li>
+               </ul>
+             </div>
+           </nav>
+           
+           <br><br>
+
+           <div class="container">
+
+           <center><h1>Credit Card Default Predictor</h1></center>
+
+           {% if alert_message %}
+            <center><div class="alert alert-danger">{{ alert_message }}</div></center>
+           {% endif %}
+
+           {% if success_message %}
+            <center><div class="alert alert-success">{{ success_message }}</div></center>
+           {% endif %}
+
+               <center><form class="card card-body" method="POST">
+                   
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="LIMIT_BAL" placeholder="Limited Balance (in New Taiwanese (NT) dollar)">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <select class="form-control" name="EDUCATION">
+                                {% for education in education_status %}
+                                <option>{{ education }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <select class="form-control" name="MARRIAGE">
+                                {% for marriage in marital_status %}
+                                <option>{{ marriage }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" name="AGE" placeholder="Age (in Years)">
+                        </div>
+                    </div>
+                    </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="PAY_1">
+                                {% for payment in payment_status %}
+                                <option>{{ payment }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <center><div class="form-group">
+                            <label style="font-size: 25px;font-weight: bold;">Bill Amount For Past 6 Months</label>
+                        </div></center>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="BILL_AMT1" placeholder="Last month Bill Amount (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="BILL_AMT2" placeholder="Last 2nd month Bill Amount (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="BILL_AMT3" placeholder="Last 3rd month Bill Amount (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="BILL_AMT4" placeholder="Last 4th month Bill Amount (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="BILL_AMT5" placeholder="Last 5th month Bill Amount (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="BILL_AMT6" placeholder="Last 6th month Bill Amount (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <center><div class="form-group">
+                            <label style="font-size: 25px;font-weight: bold;">Paid Amount For Past 6 Months</label>
+                        </div></center>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="PAY_AMT1" placeholder="Amount paid in Last Month (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="PAY_AMT2" placeholder="Amount paid in Last 2nd Month (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="PAY_AMT3" placeholder="Amount paid in Last 3rd Month (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="PAY_AMT4" placeholder="Amount paid in Last 4th Month (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="PAY_AMT5" placeholder="Amount paid in Last 5th Month (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="PAY_AMT6" placeholder="Amount paid in Last 6th Month (in New Taiwanese (NT) dollar)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-info">Predict</button>
+
+               </form></center>
+           </div>
+
+           <footer>
+            <center><p style="color: white;font-size: 17px;font-weight: bold;margin-top: 10px;">Made by VENU GOPAL KADAMBA</p></center>
+            <center><p style="color: white;font-size: 17px;font-weight: bold;margin-top: 10px;"><span style="color:red">&#10084;</span>TECHNOCOLABS<span style="color:red">&#10084;</span></p></center>
+
+        </footer>
+    </body>
+
+
+</html>
