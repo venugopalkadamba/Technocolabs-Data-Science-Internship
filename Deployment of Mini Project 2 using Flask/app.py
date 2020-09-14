@@ -51,14 +51,7 @@ def home():
             prediction, probability = predict_default(feature_values)
 
             if prediction[0] == 1:
-                if probability[:,1][0] > 0.2:
-
-                    alert_message = "This account will be defaulted and their are high chances for not defaulting after counselling the account holder."
-
-                elif probability[:,1][0] < 0.2:
-
-                    alert_message = "This account will be defaulted and their are high chances for not defaulting after counselling the account holder."
-            
+                alert_message = "This account will be defaulted and their are high chances for not defaulting after counselling the account holder."
             else:
                 success_message = "This account will not be defaulted."
     except:
