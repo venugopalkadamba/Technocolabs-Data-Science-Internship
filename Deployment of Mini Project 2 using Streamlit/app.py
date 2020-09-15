@@ -84,14 +84,17 @@ def main():
         # print(prediction)
         # print(probability[:,1][0])
         if prediction[0] == 1:
-            counselling_html = """
-                <div style = "background-color: #f8d7da; font-weight:bold;padding:10px;border-radius:7px;">
-                    <p style = 'color: #721c24;'>This account will be defaulted.</p>
-                </div>
-            """
-            st.markdown(counselling_html, unsafe_allow_html=True)
+            # counselling_html = """
+            #     <div style = "background-color: #f8d7da; font-weight:bold;padding:10px;border-radius:7px;">
+            #         <p style = 'color: #721c24;'>This account will be defaulted with a probability of {round(np.max(probability)*100, 2))}%.</p>
+            #     </div>
+            # """
+            # st.markdown(counselling_html, unsafe_allow_html=True)
+
+            st.success("This account will be defaulted with a probability of {}%.".format(round(np.max(probability)*100, 2)))
+
         else:
-            st.success("This account will not be defaulted.")
+            st.success("This account will not be defaulted with a probability of {}%.".format(round(np.max(probability)*100, 2)))
 
 
 
