@@ -49,15 +49,14 @@ def home():
             feature_values = list(features.values())
 
             prediction, probability = predict_default(feature_values)
-
             if prediction[0] == 1:
-                alert_message = "This account will be defaulted and their are high chances for not defaulting after counselling the account holder."
+                alert_message = "This account will be defaulted with a probability of {}%.".format(round(np.max(probability)*100, 2))
             else:
-                success_message = "This account will not be defaulted."
+                success_message = "This account will not be defaulted with a probability of {}%.".format(round(np.max(probability)*100, 2))
     except:
         alert_message = "Please enter relevant information."
 
     return render_template("home.html", education_status = education_status, marital_status = marital_status, payment_status = payment_status, alert_message = alert_message, success_message = success_message)
 
 if __name__ == '__main__':
-    app.run(debug = True, host='0.0.0.0')
+    app.run(debug = True)
