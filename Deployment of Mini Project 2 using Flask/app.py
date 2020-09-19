@@ -46,7 +46,8 @@ def home():
             features['MARRIAGE'] = marital_status.index(features['MARRIAGE']) + 1
             features['PAY_1'] = payment_status.index(features['PAY_1']) - 2
 
-            feature_values = list(features.values())
+            actual_feature_names = ['LIMIT_BAL', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_1', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']
+            feature_values = [features[i] for i in actual_feature_names]
 
             prediction, probability = predict_default(feature_values)
             if prediction[0] == 1:
