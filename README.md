@@ -12,8 +12,12 @@ Deployed Web Application: https://creditcard-default-predictor.herokuapp.com
 American Sign Language (ASL) is the primary language used by many deaf individuals in North America, and it is also used by hard-of-hearing and hearing individuals. The language is as rich as spoken languages and employs signs made with the hand, along with facial gestures and bodily postures. Our task was to build a Deep Learning Model to classify the Hand Signs into English alphabets. The model which we built can classify 10 Hand signs into their alphabets with 99% accuracy.<br>
 Deployed Web Application: https://kvg-asl-prediction.herokuapp.com
 
-## Final Project Demo
+## Final Project Web Application Demo
 ![alt-text](https://github.com/venugopalkadamba/Technocolabs-Data-Science-Internship/blob/master/Final%20Project/Final_Video.gif)
+
+
+## Final Project Live Detection Demo
+![alt-text](https://github.com/venugopalkadamba/Technocolabs-Data-Science-Internship/blob/master/ASL_Detection.gif)
 
 <div align="center">
   <b>Please do ⭐ this repo, if you liked my work.</b>
