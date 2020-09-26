@@ -14,3 +14,7 @@ Deployed Web Application: https://kvg-asl-prediction.herokuapp.com
 
 ## Final Project Demo
 ![alt-text](https://github.com/venugopalkadamba/Technocolabs-Data-Science-Internship/blob/master/Final%20Project/Final_Video.gif)
+
+<div align="center">
+  <b>Please do ⭐ this repo, if you liked my work.<b>
+</div>
