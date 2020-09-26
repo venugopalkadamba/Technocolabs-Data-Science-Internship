@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% block content %}
+<script>
+    function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(600)
+                        .height(400);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+
+<style>
+    @media(max-width: 768px){
+        #blah{
+            margin-top: 10px;
+        }
+    }
+</style>
+<center><h2>ASL Recognition with Deep Learning</h2></center>
+{% if message %}
+    <br>
+    <div class="alert alert-danger">
+    <center><strong style="color: red;">{{ message }}</strong></center>
+    </div>
+{% endif %}
+
+{% if pred %}
+<div class="alert alert-success">
+    <center><strong style="color: green;">The predicted Alphabet is {{ pred }}</strong></center>
+</div>
+{% endif %}
+<br>
+<div class="row">
+    <div class="col-md-6" style="box-shadow: 0 0 10px black;">
+        <center><h3>Project Description</h3></center>
+            <p>American Sign Language (ASL) is the primary language used by many deaf individuals in North America, and it is also used by hard-of-hearing and hearing individuals. The language is as rich as spoken languages and employs signs made with the hand, along with facial gestures and bodily postures.</p>
+            <h3>Project Tasks</h3>
+            <ul>
+                <li>Examine the dataset</li>
+                <li>One-hot encode the data</li>
+                <li>Define the model</li>
+                <li>Compile the model</li>
+                <li>Train the model</li>
+                <li>Test the model</li>
+                <li>Visualize mistakes</li>
+            </ul>
+            <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6" style="margin-top:10px;">
+                        <input class="btn btn-block btn-info" onchange="readURL(this);" type="file" name="image" placeholder="Upload Image">
+                    </div>
+                    <div class="col-md-6" style="margin-top:10px;">
+                        <input type="submit" class="btn btn-primary btn-block" value="Predict">
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class="col-md-6">
+        <center>
+            <img id="blah" src="/static/images/ASL_Detection.gif" style="height:400px;box-shadow: 0 0 10px black;" class="img-fluid img-thumbnail">
+        </center>
+        <div class="row">
+            <div class="col-md-12" style="margin-top:10px;"><center><a href="{{ url_for('video') }}" class="btn btn-block btn-warning">Detect Live</a></center></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
