@@ -1,4 +1,7 @@
+<div align="center">
+  
 # Technocolabs Data Science Internship
+</div>
 
 ## Mini Project 1
 <b>Data Analysis on Dr. Semmelweis and the Discovery of Handwashing Dataset</b><br>
